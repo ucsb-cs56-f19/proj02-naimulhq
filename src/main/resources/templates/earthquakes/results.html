@@ -15,7 +15,6 @@
             <thead>
                 <tr>
                     <th>Title</th>
-                    <th>Url</th>
                     <th>Count</th>
                     <th>Distance (km)</th>
                     <th>Minimum Magnitude</th>
@@ -24,7 +23,6 @@
             <tbody>
                 <tr>
                     <td><a th:href="${featureCollection.metadata.url}" th:text="${featureCollection.metadata.title}"></a></td>
-                    <td th:text="${featureCollection.metadata.url}"></td>
                     <td th:text="${featureCollection.metadata.count}"></td>
                     <td th:text="${eqSearch.distance}"></td>
                     <td th:text="${eqSearch.minmag}"></td>
