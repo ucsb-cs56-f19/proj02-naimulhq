@@ -8,6 +8,8 @@ Link to javadoc and jacoco report: https://ucsb-cs56-f19.github.io/lab07-naimulh
 
 Link to Heroku Website: https://cs56-f19-lab07-naimulhq.herokuapp.com/
 
+Travis CI Page: https://travis-ci.org/ucsb-cs56-f19/lab07-naimulhq
+
 
 # Running on Localhost.
 
