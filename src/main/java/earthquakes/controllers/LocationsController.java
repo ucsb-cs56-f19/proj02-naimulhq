@@ -4,6 +4,7 @@ import earthquakes.geojson.FeatureCollection;
 import earthquakes.searches.LocSearch;
 import earthquakes.services.EarthquakeQueryService;
 import earthquakes.searches.EqSearch;
+import earthquakes.services.LocationQueryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -33,8 +34,12 @@ public class LocationsController {
     @GetMapping("/locations/results")
     public String getLocationResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             LocSearch locSearch) {
+
+        LocationQueryService LQS = new LocationQueryService();
+
         model.addAttribute("locSearch", locSearch);
-        // TODO: Actually do the search here and add results to the model
+        String json = LQS.getJSON(locSearch.getLocation());
+        model.addAttribute("json",json);
         return "locations/results";
     }
 }
