@@ -4,13 +4,14 @@ public class EqSearch{
     
     private int distance;
     private int minmag;
-    private long lat;
-    private long lon;
+    private double lat;
+    private double lon;
     private String location;
 
 
 
     EqSearch(){};
+    
     public int getDistance(){
 	return distance;
     }
@@ -19,11 +20,11 @@ public class EqSearch{
 	return minmag;
     }
 
-    public long getLon(){
+    public double getLon(){
         return lon;
     }
 
-    public long getLat(){
+    public double getLat(){
         return lat;
     }
 
@@ -32,11 +33,11 @@ public class EqSearch{
 
     }
 
-    public void setLon(long lon){
+    public void setLon(double lon){
         this.lon = lon;
     }
 
-    public void setLat(long lat){
+    public void setLat(double lat){
         this.lat = lat;
     }
 

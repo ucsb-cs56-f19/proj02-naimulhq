@@ -4,7 +4,6 @@ import earthquakes.geojson.FeatureCollection;
 
 import earthquakes.services.EarthquakeQueryService;
 import earthquakes.searches.EqSearch;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
@@ -35,7 +34,7 @@ public class EarthquakesController {
             EqSearch eqSearch) {
         EarthquakeQueryService e = new EarthquakeQueryService();
         model.addAttribute("eqSearch", eqSearch);
-        String json = e.getJSON(eqSearch.getDistance(), eqSearch.getMinmag());
+        String json = e.getJSON(eqSearch.getDistance(), eqSearch.getMinmag(), eqSearch.getLat(), eqSearch.getLon());
         model.addAttribute("json",json);
         FeatureCollection featureCollection = FeatureCollection.fromJSON(json);
         model.addAttribute("featureCollection",featureCollection);
