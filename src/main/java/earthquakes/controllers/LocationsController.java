@@ -2,11 +2,14 @@ package earthquakes.controllers;
 
 import java.util.List;
 import earthquakes.osm.Place;
+import earthquakes.repositories.LocationRepository;
 import earthquakes.geojson.FeatureCollection;
 import earthquakes.searches.LocSearch;
 import earthquakes.services.EarthquakeQueryService;
 import earthquakes.searches.EqSearch;
 import earthquakes.services.LocationQueryService;
+import earthquakes.repositories.LocationRepository;
+import earthquakes.entities.Location;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -27,6 +30,9 @@ public class LocationsController {
     @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
 
+    @Autowired
+    private LocationRepository locationRepository;
+
     @GetMapping("/locations/search")
     public String getLocationSearch(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             LocSearch locSearch) {
@@ -45,5 +51,12 @@ public class LocationsController {
         List<Place> Places = Place.listFromJson(json);
         model.addAttribute("Places",Places);
         return "locations/results";
+    }
+
+    @GetMapping("/locations")
+    public String index(Model model) {
+        Iterable<Location> locations= locationRepository.findAll();
+        model.addAttribute("locations", locations);
+        return "locations/index";
     }
 }
